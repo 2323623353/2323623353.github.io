@@ -1,0 +1,995 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.proxy.ustclug.org/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="76x76" href="/image/kong.png">
+  <link rel="icon" href="/image/kong.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Kong">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、 JavaSE基础1 数据1.1 数据类型 \n 代表换行 \t 代表一个tab       2 变量2.1 变量类型2.1.1 基本数据类型整数型 int  1int i &#x3D; 1; &#x2F;&#x2F;定义一个整数变量i&#x3D;1   long  1long i &#x3D; 123456; &#x2F;&#x2F;定义一个长整数i&#x3D;123456，默认int类型，若字符超出int变量限制，需要在尾部加上L&#x2F;l  浮点数 double 双精度">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java笔记_基础">
+<meta property="og:url" content="http://2323623353.github.io/2022/07/04/Java%E7%AC%94%E8%AE%B0_%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Kong&#39;s Blog">
+<meta property="og:description" content="一、 JavaSE基础1 数据1.1 数据类型 \n 代表换行 \t 代表一个tab       2 变量2.1 变量类型2.1.1 基本数据类型整数型 int  1int i &#x3D; 1; &#x2F;&#x2F;定义一个整数变量i&#x3D;1   long  1long i &#x3D; 123456; &#x2F;&#x2F;定义一个长整数i&#x3D;123456，默认int类型，若字符超出int变量限制，需要在尾部加上L&#x2F;l  浮点数 double 双精度">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://kong-1252345869.cos.ap-nanjing.myqcloud.com/typora/image-20220624220152230.png">
+<meta property="og:image" content="https://kong-1252345869.cos.ap-nanjing.myqcloud.com/typora/e850352ac65c103880a07b53bc119313b17e8941">
+<meta property="og:image" content="https://kong-1252345869.cos.ap-nanjing.myqcloud.com/typora/image-20220624220601251.png">
+<meta property="og:image" content="https://kong-1252345869.cos.ap-nanjing.myqcloud.com/typora/image-20220624220712921.png">
+<meta property="og:image" content="https://kong-1252345869.cos.ap-nanjing.myqcloud.com/typora/image-20220624221952121.png">
+<meta property="og:image" content="https://kong-1252345869.cos.ap-nanjing.myqcloud.com/typora/image-20220624222517528.png">
+<meta property="og:image" content="https://kong-1252345869.cos.ap-nanjing.myqcloud.com/typora/image-20220624222626819.png">
+<meta property="og:image" content="https://kong-1252345869.cos.ap-nanjing.myqcloud.com/typora/image-20220624222812216.png">
+<meta property="og:image" content="https://kong-1252345869.cos.ap-nanjing.myqcloud.com/typora/image-20220624222936291.png">
+<meta property="article:published_time" content="2022-07-04T13:46:22.066Z">
+<meta property="article:modified_time" content="2022-07-04T13:46:22.207Z">
+<meta property="article:author" content="Kong">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="代码">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kong-1252345869.cos.ap-nanjing.myqcloud.com/typora/image-20220624220152230.png">
+  
+  
+  
+  <title>Java笔记_基础 - Kong&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/scroll.css">
+<link rel="stylesheet" href="/css/scroll.css">
+<link rel="stylesheet" href="/css/mac.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"2323623353.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>KongのBlog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                时间线
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://kong-1252345869.cos.ap-nanjing.myqcloud.com/%E5%9B%BE%E5%BA%8A/sky.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Java笔记_基础"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Kong
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-04 21:46" pubdate>
+          2022年7月4日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          19k 字
+        
+      </span>
+    
+
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Java笔记_基础</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="一、-JavaSE基础"><a href="#一、-JavaSE基础" class="headerlink" title="一、 JavaSE基础"></a>一、 JavaSE基础</h1><h2 id="1-数据"><a href="#1-数据" class="headerlink" title="1 数据"></a><font color='blue'>1 数据</font></h2><h3 id="1-1-数据类型"><a href="#1-1-数据类型" class="headerlink" title="1.1 数据类型"></a><font color='green'>1.1 数据类型</font></h3><ul>
+<li><h5 id="n-代表换行"><a href="#n-代表换行" class="headerlink" title="\n 代表换行"></a>\n 代表换行</h5></li>
+<li><h5 id="t-代表一个tab"><a href="#t-代表一个tab" class="headerlink" title="\t 代表一个tab"></a>\t 代表一个tab</h5></li>
+</ul>
+<img src="https://kong-1252345869.cos.ap-nanjing.myqcloud.com/typora/image-20220624220152230.png" srcset="/img/loading.gif" lazyload alt="image-20220624220152230" style="zoom: 67%;" />
+
+<img src="https://kong-1252345869.cos.ap-nanjing.myqcloud.com/typora/e850352ac65c103880a07b53bc119313b17e8941" srcset="/img/loading.gif" lazyload alt="img" style="zoom:80%;" />
+
+<hr>
+<h2 id="2-变量"><a href="#2-变量" class="headerlink" title="2 变量"></a><font color='blue'>2 变量</font></h2><h3 id="2-1-变量类型"><a href="#2-1-变量类型" class="headerlink" title="2.1 变量类型"></a><font color='green'>2.1 变量类型</font></h3><h4 id="2-1-1-基本数据类型"><a href="#2-1-1-基本数据类型" class="headerlink" title="2.1.1 基本数据类型"></a>2.1.1 <font color='cornflowerblue'>基本数据类型</font></h4><h4 id="整数型"><a href="#整数型" class="headerlink" title="整数型"></a>整数型</h4><ul>
+<li><h5 id="int"><a href="#int" class="headerlink" title="int"></a><font color='orange'>int</font></h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; <span class="hljs-comment">//定义一个整数变量i=1</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="long"><a href="#long" class="headerlink" title="long"></a>long</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">long</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">123456</span>; <span class="hljs-comment">//定义一个长整数i=123456，默认int类型，若字符超出int变量限制，需要在尾部加上L/l</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h4><ul>
+<li><h5 id="double-双精度"><a href="#double-双精度" class="headerlink" title="double 双精度"></a><font color='orange'>double</font> 双精度</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">double</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-number">1.01</span>; <span class="hljs-comment">//定义一个浮点数变量a=1.01,随意写小数，默认为double类型</span><br><span class="hljs-comment">//例如</span><br>b = <span class="hljs-number">10.1</span>/<span class="hljs-number">2</span>;<span class="hljs-comment">//此时b为double类型</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="float-单精度"><a href="#float-单精度" class="headerlink" title="float 单精度"></a>float 单精度</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">float</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-number">9.5F</span>;<span class="hljs-comment">//定义一个浮点数变量a=9.5，随意写小数字变量需在其后面加F/f</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h4><ul>
+<li><h5 id="char"><a href="#char" class="headerlink" title="char "></a><font color='orange'>char </font></h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">char</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;一&#x27;</span>; <span class="hljs-comment">//定义一个字符变量,任意 单个 字符，加 单引号</span><br><span class="hljs-type">char</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;a&#x27;</span>+<span class="hljs-number">1</span>; <span class="hljs-comment">//对应ASCII码相加，例如a对应97，加1，输出i为b</span><br><span class="hljs-type">char</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;中国&#x27;</span>;<span class="hljs-comment">//报错</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h4><ul>
+<li><h5 id="boolean"><a href="#boolean" class="headerlink" title="boolean"></a><font color='orange'>boolean</font></h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">boolean</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> ture;<span class="hljs-comment">//定义一个布尔变量，为true/false</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="2-1-2-引用数据类型"><a href="#2-1-2-引用数据类型" class="headerlink" title="2.1.2 引用数据类型"></a><font color='cornflowerblue'>2.1.2 引用数据类型</font></h3><ul>
+<li><h5 id="String-字符串"><a href="#String-字符串" class="headerlink" title="String 字符串"></a>String 字符串</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;一二三&quot;</span><span class="hljs-comment">//定义字符串变量a=一二三，加 双引号</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="2-2-变量标准"><a href="#2-2-变量标准" class="headerlink" title="2.2 变量标准"></a><font color='green'>2.2 变量标准</font></h2><ul>
+<li><h5 id="变量的有效范围从定义-开始到“-”截止，且在同一个范围内部不能同时定义2个同名的变量。"><a href="#变量的有效范围从定义-开始到“-”截止，且在同一个范围内部不能同时定义2个同名的变量。" class="headerlink" title="变量的有效范围从定义 开始到“}”截止，且在同一个范围内部不能同时定义2个同名的变量。"></a>变量的有效范围从定义 开始到“<font color='red'>}</font>”截止，且在同一个范围内部不能同时定义2个同名的变量。</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//错误示例</span><br>&#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>&#125;<br>a++ ;<span class="hljs-comment">//此时a找不到</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="变量定义可以没有初始值，但是使用的时候必须给初始值。"><a href="#变量定义可以没有初始值，但是使用的时候必须给初始值。" class="headerlink" title="变量定义可以没有初始值，但是使用的时候必须给初始值。"></a>变量定义可以没有<font color='red'>初始值</font>，但是使用的时候必须给初始值。</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//错误示例</span><br><span class="hljs-type">int</span> a;<br><span class="hljs-keyword">if</span> (a!=<span class="hljs-number">0</span>); <span class="hljs-comment">//a没有初始值</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="3-进制"><a href="#3-进制" class="headerlink" title="3 进制"></a><font color='blue'>3 进制</font></h2><ul>
+<li><h5 id="二进制"><a href="#二进制" class="headerlink" title="二进制"></a>二进制</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0B001</span>;<span class="hljs-comment">//定义二进制数（以0B(0b)开头）</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="八进制"><a href="#八进制" class="headerlink" title="八进制"></a>八进制</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0777</span>;<span class="hljs-comment">//定义八进制数（以0开头）</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="十六进制"><a href="#十六进制" class="headerlink" title="十六进制"></a>十六进制</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0XFA</span>;<span class="hljs-comment">//定义十六进制数（以0X(0x)开头）</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="4-类型转换"><a href="#4-类型转换" class="headerlink" title="4 类型转换"></a><font color='blue'>4 类型转换</font></h2><ul>
+<li><h6 id="在表达式中，小范围类型的变量会自动转换成当前较大范围类型的再运算。"><a href="#在表达式中，小范围类型的变量会自动转换成当前较大范围类型的再运算。" class="headerlink" title="在表达式中，小范围类型的变量会自动转换成当前较大范围类型的再运算。"></a><font color='black'>在表达式中，小范围类型的变量会自动转换成当前较大范围类型的再运算。</font></h6></li>
+<li><h6 id="byte-、shout-、char-—-gt-int-—-gt-long-—-gt-float-—-gt-double"><a href="#byte-、shout-、char-—-gt-int-—-gt-long-—-gt-float-—-gt-double" class="headerlink" title="byte 、shout 、char —&gt; int —&gt; long —&gt; float —&gt;double"></a><font color='red'>byte 、shout 、char</font> —&gt; int —&gt; long —&gt; float —&gt;double</h6></li>
+</ul>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ul>
+<li><h5 id="表达式的最终结果类型由表达式中的最高类型决定。"><a href="#表达式的最终结果类型由表达式中的最高类型决定。" class="headerlink" title="表达式的最终结果类型由表达式中的最高类型决定。"></a>表达式的最终结果类型由表达式中的<font color='red'>最高类型决定。</font></h5></li>
+<li><h5 id="在表达式中，byte、short、char-是直接转换成int类型参与运算。"><a href="#在表达式中，byte、short、char-是直接转换成int类型参与运算。" class="headerlink" title="在表达式中，byte、short、char 是直接转换成int类型参与运算。"></a><font color='red'>在表达式中，byte、short、char</font> 是直接转换成<font color='red'>int</font>类型参与运算。</h5></li>
+<li><h5 id="类型范围大的数据或者变量，不能直接赋值给类型范围小的变量，会报错。"><a href="#类型范围大的数据或者变量，不能直接赋值给类型范围小的变量，会报错。" class="headerlink" title="类型范围大的数据或者变量，不能直接赋值给类型范围小的变量，会报错。"></a>类型范围<font color='red'>大</font>的数据或者变量，不能直接<font color='red'>赋值</font>给类型范围<font color='red'>小</font>的变量，会报错。</h5></li>
+</ul>
+<h4 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//正确示例</span><br><span class="hljs-type">int</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-number">20</span>;<br><span class="hljs-type">byte</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> (<span class="hljs-type">byte</span>)a;<span class="hljs-comment">//不能直接赋值</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="可能造成数据（丢失）溢出"><a href="#可能造成数据（丢失）溢出" class="headerlink" title="可能造成数据（丢失）溢出"></a>可能造成数据（丢失）溢出</h5></li>
+<li><h5 id="浮点型强转成整型，直接丢掉小数部分，保留整数部分返回"><a href="#浮点型强转成整型，直接丢掉小数部分，保留整数部分返回" class="headerlink" title="浮点型强转成整型，直接丢掉小数部分，保留整数部分返回"></a>浮点型强转成整型，<font color='red'>直接丢掉小数部分，保留整数部分返回</font></h5></li>
+</ul>
+<h2 id="5-运算"><a href="#5-运算" class="headerlink" title="5 运算"></a><font color='blue'>5 运算</font></h2><h4 id="常用运算"><a href="#常用运算" class="headerlink" title="常用运算"></a>常用运算</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-number">5</span>;<br><span class="hljs-string">&quot;a&quot;</span>+<span class="hljs-number">5</span>;<span class="hljs-comment">//输出a5 </span><br><span class="hljs-string">&#x27;a&#x27;</span>+<span class="hljs-number">5</span>;<span class="hljs-comment">//输出102//97+5</span><br><span class="hljs-string">&quot;aa&quot;</span>+<span class="hljs-number">5</span>;<span class="hljs-comment">//输出aa5</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h4><img src="https://kong-1252345869.cos.ap-nanjing.myqcloud.com/typora/image-20220624220601251.png" srcset="/img/loading.gif" lazyload alt="image-20220624220601251" style="zoom: 50%;" />
+
+<img src="https://kong-1252345869.cos.ap-nanjing.myqcloud.com/typora/image-20220624220712921.png" srcset="/img/loading.gif" lazyload alt="image-20220624220712921" style="zoom: 50%;" />
+
+<h4 id="三元运算"><a href="#三元运算" class="headerlink" title="三元运算"></a>三元运算</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//格式 (判断)?a:b;</span><br><span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">90</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> i == <span class="hljs-number">90</span> ? <span class="hljs-string">&quot;是&quot;</span> : <span class="hljs-string">&quot;否&quot;</span> <span class="hljs-comment">//判断是否符合条件，是，返回前面的值，否，返回后面的值</span><br>System.out.println(r);<span class="hljs-comment">//r = 否</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="6-算法"><a href="#6-算法" class="headerlink" title="6 算法"></a><font color='blue'>6 算法</font></h2><h3 id="6-1-结构"><a href="#6-1-结构" class="headerlink" title="6.1 结构"></a><font color='green'>6.1 结构</font></h3><h4 id="6-1-1分支结构"><a href="#6-1-1分支结构" class="headerlink" title="6.1.1分支结构"></a><font color='cornflowerblue'>6.1.1分支结构</font></h4><ul>
+<li><h5 id="if"><a href="#if" class="headerlink" title="if"></a>if</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (条件)&#123;<br>    分支<span class="hljs-number">1</span><br>&#125;<span class="hljs-keyword">else</span> &#123;<br>    分支<span class="hljs-number">2</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">switch</span> (值)&#123;<br>        <span class="hljs-keyword">case</span>(对应值):<br>           执行……;<br>           <span class="hljs-keyword">break</span>;<span class="hljs-comment">//退出，没有则继续执行下一项</span><br>        <span class="hljs-keyword">case</span>(对应值):<br>           执行……;<br>           <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">default</span>:<span class="hljs-comment">//都没有则执行这一条</span><br>           执行……;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="6-1-2-循环结构"><a href="#6-1-2-循环结构" class="headerlink" title="6.1.2 循环结构"></a><font color='cornflowerblue'>6.1.2 循环结构</font></h3><ul>
+<li><h5 id="for"><a href="#for" class="headerlink" title="for"></a>for</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;i &lt; <span class="hljs-number">5</span>;i++)<br>&#123;<br>    <span class="hljs-type">int</span> a;<br>    a++;<br>&#125;<br><span class="hljs-comment">//for-each</span><br><span class="hljs-type">int</span> [] a = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>&#125;;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> c :a)&#123;<br>            System.out.println(c);<br>        &#125;<br><span class="hljs-comment">//之间遍历数组并输出元素</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="while"><a href="#while" class="headerlink" title="while"></a>while</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">white ( i &gt; <span class="hljs-number">0</span>)&#123;<br>    执行……<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="控制语句"><a href="#控制语句" class="headerlink" title="控制语句"></a><font color='red'>控制语句</font></h4><ul>
+<li><h5 id="break-跳出并结束当前所在循环的执行"><a href="#break-跳出并结束当前所在循环的执行" class="headerlink" title="break 跳出并结束当前所在循环的执行"></a>break <font color='red'>跳出并结束当前所在循环</font>的执行</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span><span class="hljs-number">1</span> ; i &lt;=  <span class="hljs-number">10</span> ; i++)&#123;<br>    <span class="hljs-keyword">if</span> (i == <span class="hljs-number">5</span>)&#123;<br>        <span class="hljs-keyword">break</span>;<span class="hljs-comment">//i为5时结束循环并跳出</span><br>    &#125;<br>    x++;<br>&#125;<br><span class="hljs-comment">//x最终为4</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="continue-跳出当前循环的当次执行，进入下一次循环"><a href="#continue-跳出当前循环的当次执行，进入下一次循环" class="headerlink" title="continue 跳出当前循环的当次执行，进入下一次循环"></a>continue 跳出<font color='red'>当前循环的当次执行，进入下一次循环</font></h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span> ; i &lt;= <span class="hljs-number">10</span> ; i++)&#123;<br>    <span class="hljs-keyword">if</span> (i == <span class="hljs-number">5</span>)&#123;<br>        <span class="hljs-keyword">continue</span>;<span class="hljs-comment">//当i为5时跳出，直接执行下一次循环</span><br>    &#125;<br>    x++;<br>&#125;<br><span class="hljs-comment">//x最终为9</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="6-2-方法"><a href="#6-2-方法" class="headerlink" title="6.2 方法"></a><font color='green'>6.2 方法</font></h2><ul>
+<li><h5 id="创建方法-public-static"><a href="#创建方法-public-static" class="headerlink" title="创建方法(public static )"></a>创建方法(public static )</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> sss(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);<span class="hljs-comment">//调用方法sss，按格式输入1，2</span><br>        System.out.println(k);<span class="hljs-comment">//输出结果为两数相加</span><br>    &#125;<span class="hljs-comment">//以下为创建的方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">sss</span> <span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span>&#123;<span class="hljs-comment">//创建一个为sss的方法</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> a + b;<span class="hljs-comment">//输入的两个数相加</span><br>        <span class="hljs-keyword">return</span> c;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="创建数组找出最大值方法"><a href="#创建数组找出最大值方法" class="headerlink" title="创建数组找出最大值方法"></a>创建数组找出最大值方法</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>       <span class="hljs-type">int</span>[] aa = &#123;<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">89</span>,<span class="hljs-number">74</span>,<span class="hljs-number">5</span>,<span class="hljs-number">2</span>,<span class="hljs-number">0</span>&#125;;<br>       System.out.println(datamax(aa));<span class="hljs-comment">//将aa数组带入方法并输出最大值</span><br>   &#125;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">datamax</span><span class="hljs-params">(<span class="hljs-type">int</span>[] n)</span> &#123;<span class="hljs-comment">//定义一个数组方法</span><br>       <span class="hljs-type">int</span> <span class="hljs-variable">max</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<span class="hljs-comment">//初始最大值</span><br>       <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n.length; i++) &#123;<span class="hljs-comment">//遍历数组找出最大值</span><br>           <span class="hljs-keyword">if</span> (n[i] &gt; max) &#123;<br>               max = n[i];<br>           &#125;<br>       &#125;<br>       <span class="hljs-keyword">return</span> max;<span class="hljs-comment">//输出最大值</span><br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="重载方法"><a href="#重载方法" class="headerlink" title="重载方法"></a>重载方法</h5></li>
+</ul>
+<blockquote>
+<p>同一个类中，出现多个方法名相同，但是形参列表是不同的，那么这些方法就是重载方法</p>
+</blockquote>
+<h4 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a><font color='red'>注意事项</font></h4><ul>
+<li>方法的编写顺序无所谓</li>
+<li>方法与方法之间为平级，不能嵌套定义,方法内，无法在嵌套定义方法</li>
+<li>方法的返回值类型为void（无返回值），方法内不使用return输出，若方法写明返回值类型，则方法内部必须使用return返回对应类型的数据</li>
+<li>return语句下不能编写代码，return之后就会结束</li>
+<li>方法不调用就不执行，调用时必须严格匹配方法的参数情况</li>
+<li>有返回值的方法调用时可以选择定义变量接收结果，或者直接输出调用，甚至直接调用；无返回值的调用只能调用一下</li>
+</ul>
+<h2 id="6-3-示例"><a href="#6-3-示例" class="headerlink" title="6.3 示例"></a><font color='green'>6.3 示例</font></h2><ul>
+<li><h5 id="数值拆分-倒序输出"><a href="#数值拆分-倒序输出" class="headerlink" title="数值拆分(倒序输出)"></a>数值拆分(倒序输出)</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">data</span> <span class="hljs-operator">=</span> <span class="hljs-number">123</span>;<span class="hljs-comment">//设置初始值data = 123</span><br><span class="hljs-keyword">while</span> (data&gt;<span class="hljs-number">0</span>) &#123;<span class="hljs-comment">//判断当前值是否大于零，大于则进入循环</span><br><span class="hljs-type">int</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> data % <span class="hljs-number">10</span>;<span class="hljs-comment">//对初始值求余，得出个位数 c = 3</span><br>data = data/<span class="hljs-number">10</span>;<span class="hljs-comment">//对初始值整除，去除个位 data = 12   </span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="水仙花数-三位数，且每位数立方相加等于原数"><a href="#水仙花数-三位数，且每位数立方相加等于原数" class="headerlink" title="水仙花数(三位数，且每位数立方相加等于原数)"></a>水仙花数(三位数，且每位数立方相加等于原数)</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">g</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br><span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br><span class="hljs-type">int</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">100</span>; i &lt;= <span class="hljs-number">999</span>; i++) &#123;<span class="hljs-comment">//定义i设置三位数条件，每次加1</span><br>     <span class="hljs-type">int</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> i;<span class="hljs-comment">//将i赋值c，不更改原数值</span><br>     sum = <span class="hljs-number">0</span>;<span class="hljs-comment">//求和归零</span><br>    <span class="hljs-keyword">while</span> (c&gt;<span class="hljs-number">0</span>)&#123;<span class="hljs-comment">//判断值是否大于0</span><br>         g = c % <span class="hljs-number">10</span>;<span class="hljs-comment">//对10求余，得出最后一位</span><br>         c = c /<span class="hljs-number">10</span>;<span class="hljs-comment">//对10整除，去除最后一位</span><br>         b = g*g*g;<span class="hljs-comment">//位数的立方</span><br>         sum += b;<span class="hljs-comment">//循环范围内，每次相加，得出立方和</span><br>    &#125;<br>    <span class="hljs-keyword">if</span> (sum == i) &#123;<span class="hljs-comment">//判断立方和是否为原数</span><br>         System.out.println(i);<span class="hljs-comment">//输出原数</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Random</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Random</span>();<span class="hljs-comment">//设置随机数</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">data</span> <span class="hljs-operator">=</span> s.nextInt(<span class="hljs-number">100</span>)+<span class="hljs-number">1</span>;<span class="hljs-comment">//随机数范围0-99加一为1-100</span><br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<span class="hljs-comment">//重复循环</span><br>            <span class="hljs-type">Scanner</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<span class="hljs-comment">//设置输入</span><br>            <span class="hljs-type">int</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> in.nextInt();<span class="hljs-comment">//定义变量将输入值赋予变量</span><br>            <span class="hljs-keyword">if</span> (a&lt;data)&#123;<span class="hljs-comment">//判断随机数与变量的大小</span><br>                System.out.println(<span class="hljs-string">&quot;小&quot;</span>);<br>            &#125;  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (a&gt;data)&#123;<br>                System.out.println(<span class="hljs-string">&quot;大&quot;</span>);<br>            &#125;<span class="hljs-keyword">else</span> &#123;<br>                System.out.println(<span class="hljs-string">&quot;猜对了&quot;</span> + a);<br>                <span class="hljs-keyword">break</span>;<span class="hljs-comment">//正确后退出循环</span><br>            &#125;<br>        &#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="数组随机数"><a href="#数组随机数" class="headerlink" title="数组随机数"></a>数组随机数</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java">System.out.println(<span class="hljs-string">&quot;输入几位数组&quot;</span>);<br>       <span class="hljs-type">Scanner</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>       <span class="hljs-type">int</span> <span class="hljs-variable">pp</span> <span class="hljs-operator">=</span> in.nextInt();<span class="hljs-comment">//输入要猜几位的数组</span><br>       <span class="hljs-type">int</span>[] a =<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[pp];<span class="hljs-comment">//定义一个&quot;输入&quot;位数组</span><br>       <span class="hljs-type">Random</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Random</span>();<span class="hljs-comment">//定义随机数</span><br>       <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; pp; i++) &#123;<br>           <span class="hljs-type">int</span> <span class="hljs-variable">sj</span> <span class="hljs-operator">=</span> s.nextInt(<span class="hljs-number">1</span>,<span class="hljs-number">21</span>);<span class="hljs-comment">//将1-20之间的随机数赋值给sj</span><br>           a[i] = sj;<span class="hljs-comment">//将随机数sj填入数组对应位数</span><br>       &#125;<span class="hljs-comment">//以上得出随机数数组</span><br>       out:<span class="hljs-comment">//给死循环加退出</span><br>       <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>           System.out.println(<span class="hljs-string">&quot;输入1-20之间的整数&quot;</span>);<br>           <span class="hljs-type">int</span> <span class="hljs-variable">sr</span> <span class="hljs-operator">=</span> in.nextInt();<span class="hljs-comment">//输入猜的数</span><br>           <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; a.length; i++) &#123;<span class="hljs-comment">//</span><br>               <span class="hljs-keyword">if</span> (a[i] == sr)&#123;<span class="hljs-comment">//将输入的数与数组每一位相对比</span><br>                   System.out.println(<span class="hljs-string">&quot;猜对了，在第&quot;</span> + (<span class="hljs-type">int</span>)(i+<span class="hljs-number">1</span>) + <span class="hljs-string">&quot;位&quot;</span>);<span class="hljs-comment">//猜对，输出在数组第一次出现的位数</span><br>                   <span class="hljs-keyword">break</span> out;<span class="hljs-comment">//退出死循环</span><br>               &#125;<br>           &#125;<br>           System.out.println(<span class="hljs-string">&quot;未命中&quot;</span>);<span class="hljs-comment">//与数组每一位相对比都不是，则输出未命中</span><br>       &#125;<br>       <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; a.length; i++) &#123;<br>           System.out.print(a[i]+<span class="hljs-string">&quot; &quot;</span>);<span class="hljs-comment">//输出数组每一位，在同一行</span><br>       &#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="数组随机排序"><a href="#数组随机排序" class="headerlink" title="数组随机排序"></a>数组随机排序</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> [] codes = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">5</span>];<span class="hljs-comment">//定义一个数组</span><br>        <span class="hljs-type">Scanner</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<span class="hljs-comment">//新建输入</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; codes.length; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;输出第&quot;</span> + (i + <span class="hljs-number">1</span>) + <span class="hljs-string">&quot;个工号&quot;</span>);<span class="hljs-comment">//输出工号提示</span><br>            <span class="hljs-type">int</span> <span class="hljs-variable">code</span> <span class="hljs-operator">=</span> in.nextInt();<span class="hljs-comment">//输入的值赋予code</span><br>            codes[i] = code;<span class="hljs-comment">//将code依次加入数组</span><br>        &#125;<br>        <span class="hljs-type">Random</span> <span class="hljs-variable">suiji</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Random</span>();<span class="hljs-comment">//新建随机数</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<span class="hljs-comment">//新建临时中转值</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; codes.length; j++) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">index</span> <span class="hljs-operator">=</span> suiji.nextInt(codes.length);<span class="hljs-comment">//设置随机最大值，从0开始 对应数组</span><br>            temp = codes[index];<span class="hljs-comment">//将数组随机位数的值放到中转</span><br>            codes[index] = codes[j];<span class="hljs-comment">//将依次读到的数值存到随机到的位置</span><br>            codes[j] = temp;<span class="hljs-comment">//将随机原位置的值放到依次读到的值的位置，完成两数值位置交换</span><br>        &#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a><font color='red'>冒泡排序</font></h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java">System.out.println(<span class="hljs-string">&quot;输入几位数组&quot;</span>);<br>       <span class="hljs-type">Scanner</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>       <span class="hljs-type">int</span> <span class="hljs-variable">pp</span> <span class="hljs-operator">=</span> in.nextInt();<span class="hljs-comment">//输入要猜几位的数组</span><br>       <span class="hljs-type">int</span>[] codes =<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[pp];<span class="hljs-comment">//定义一个&quot;输入&quot;位数组</span><br>       <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">o</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; o &lt; codes.length; o++) &#123;<br>           System.out.println(<span class="hljs-string">&quot;输出第&quot;</span> + (o + <span class="hljs-number">1</span>) + <span class="hljs-string">&quot;个&quot;</span>);<span class="hljs-comment">//输出工号提示</span><br>           <span class="hljs-type">int</span> <span class="hljs-variable">code</span> <span class="hljs-operator">=</span> in.nextInt();<span class="hljs-comment">//输入的值赋予code</span><br>           codes[o] = code;<span class="hljs-comment">//将code依次加入数组</span><br>       &#125;<span class="hljs-comment">//以上为自定义数组位数并自定义数组值</span><br>       <span class="hljs-type">int</span> temp;<span class="hljs-comment">//定义中转值</span><br>       <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; k &lt; codes.length; k++) &#123;<span class="hljs-comment">//循环次数从1开始（便于后续减去）到数组长度，例如5个数只需比较四次，</span><br>           <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; codes.length - k; i++) &#123;<span class="hljs-comment">//减去k，因为每次排序完，就可以一轮少一次排序</span><br>               <span class="hljs-keyword">if</span> (codes[i] &gt; codes[(i + <span class="hljs-number">1</span>)]) &#123;<span class="hljs-comment">//比较前后量数值大小，前面的数值大则执行调换</span><br>                   temp = codes[i];<span class="hljs-comment">//前面的值存临时</span><br>                   codes[i] = codes[(i + <span class="hljs-number">1</span>)];<span class="hljs-comment">//后面的换到前面</span><br>                   codes[(i + <span class="hljs-number">1</span>)] = temp;<span class="hljs-comment">//临时大值换到后面</span><br>               &#125;<br>           &#125;<br>       &#125;<span class="hljs-comment">//以下为输出排序后的数组</span><br>       System.out.println();<br>       <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">q</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; q &lt; codes.length; q++) &#123;<br>           System.out.print(codes[q]+<span class="hljs-string">&quot; &quot;</span>);<br>       &#125;<span class="hljs-comment">//例如4位数组，第一轮只需比三次，第二轮只需比两次，第三轮只需比一次。且只需比三轮。（至多次数）</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="查询每个数在数组中的重复个数"><a href="#查询每个数在数组中的重复个数" class="headerlink" title="查询每个数在数组中的重复个数"></a>查询每个数在数组中的重复个数</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Scanner</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>    <span class="hljs-type">int</span> x;<span class="hljs-comment">//定义变量x</span><br>    <span class="hljs-type">int</span> [] numbers = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">10</span>];<span class="hljs-comment">//定义十位数组</span><br>    x = in.nextInt();<span class="hljs-comment">//将输入赋值x，输入小于10的数</span><br>    <span class="hljs-keyword">while</span> (x!=-<span class="hljs-number">1</span>)&#123;<span class="hljs-comment">//输入-1终止</span><br>        <span class="hljs-keyword">if</span> (x&gt;=<span class="hljs-number">0</span> &amp;&amp; x&lt;=<span class="hljs-number">9</span>)&#123;<span class="hljs-comment">//对应数组位数</span><br>            numbers[x]++;<span class="hljs-comment">//输入的数对应数组位数，对应位数数值加一，例如2就为对应数组变成1</span><br>        &#125;<br>        x = in.nextInt();<span class="hljs-comment">//重复输入</span><br>    &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; numbers.length; i++) &#123;<span class="hljs-comment">//遍历数组</span><br>            System.out.print(i + <span class="hljs-string">&quot;:&quot;</span> + numbers[i]+<span class="hljs-string">&quot; &quot;</span>);<span class="hljs-comment">//输出数组对应位数和位数对应数字</span><br>        &#125;<span class="hljs-comment">//示例 2 0 4 2 2 输出 0:1 2:3 4:1</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="判断数值是否在数组中"><a href="#判断数值是否在数组中" class="headerlink" title="判断数值是否在数组中"></a>判断数值是否在数组中</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[]numbres = &#123;<span class="hljs-number">0</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">4</span>,<span class="hljs-number">4</span>&#125;;<br>    <span class="hljs-type">Scanner</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>    <span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> in.nextInt();<br>        <span class="hljs-type">int</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; numbres.length; i++) &#123;<br>            <span class="hljs-keyword">if</span> (x==numbres[i])&#123;<br>                b =i + <span class="hljs-number">1</span>;<br>                System.out.println(<span class="hljs-string">&quot;此数在数组内，且第一次出现的位数为&quot;</span> + b + <span class="hljs-string">&quot;位&quot;</span>);<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (b == <span class="hljs-number">0</span>) &#123;<br>            System.out.println(<span class="hljs-string">&quot;不在此数组内&quot;</span>);<br>        &#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="mooc-多项式加法"><a href="#mooc-多项式加法" class="headerlink" title="mooc 多项式加法"></a>mooc 多项式加法</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Scanner</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<span class="hljs-comment">//定义输入</span><br>       <span class="hljs-type">int</span> [] e = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">101</span>];<span class="hljs-comment">//题目说幂次最大100，这里我将数组的位数当做幂次，所以有101个（从0开始）//数组的位数代表幂次，对应的数值代表系数</span><br>       <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<span class="hljs-comment">//用来后续判断是否加“+”</span><br>       <span class="hljs-type">int</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;<span class="hljs-comment">//因为我只定义一个数组，所以用来判断输入两次0后就停止输入开始输出</span><br>       <span class="hljs-keyword">while</span> (c!=<span class="hljs-number">0</span>) &#123;<span class="hljs-comment">//判断是否退出循环</span><br>           <span class="hljs-type">int</span> <span class="hljs-variable">s</span>  <span class="hljs-operator">=</span> in.nextInt();<span class="hljs-comment">//输入的值赋予数组的位数</span><br>           <span class="hljs-type">int</span> <span class="hljs-variable">f</span> <span class="hljs-operator">=</span> in.nextInt();<span class="hljs-comment">//输入位数对应的数值</span><br>           <span class="hljs-keyword">if</span> (s &gt;= <span class="hljs-number">0</span>) &#123;<span class="hljs-comment">//位数不可能为负从零开始，所以大于等于0</span><br>               e[s] += f;<span class="hljs-comment">//这里如果输入两次同样的位数，所对应的值就会累加，省去一个数组</span><br>           &#125;<span class="hljs-keyword">if</span> (s == <span class="hljs-number">0</span>)&#123;<span class="hljs-comment">//判断输入几次0了</span><br>               c--;<span class="hljs-comment">//初始值为2，两次之后就退出</span><br>           &#125;<br>       &#125;<br>       <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> e.length - <span class="hljs-number">1</span>; k &gt;=<span class="hljs-number">0</span>; k--) &#123;<span class="hljs-comment">//因为幂次要降序，数组位数等于幂次，所以从最后一个开始倒序</span><br>           <span class="hljs-keyword">if</span> (e[k] != <span class="hljs-number">0</span>) &#123;<span class="hljs-comment">//判断数组对应位数是否有值，默认为0，为0则不输出</span><br>               <span class="hljs-keyword">if</span>(count &gt; <span class="hljs-number">0</span>) &#123;<span class="hljs-comment">//判断是否为第一位，初始值0，第一位不输出“+”</span><br>                   <span class="hljs-keyword">if</span> (e[k] &gt; <span class="hljs-number">0</span>) &#123;<span class="hljs-comment">//判断当前位数对应数值是否为正数</span><br>                       System.out.print(<span class="hljs-string">&quot;+&quot;</span>);<span class="hljs-comment">//都满足则输出“+”</span><br>                   &#125;<br>               &#125;<br>               <span class="hljs-keyword">if</span> (k == <span class="hljs-number">1</span>) &#123;<span class="hljs-comment">//判断幂次是否为1，为1不用写1次方（数组位数代表幂次）</span><br>                   <span class="hljs-keyword">if</span>( e[k] == <span class="hljs-number">1</span>)&#123;<span class="hljs-comment">//判断系数是否为1，同上</span><br>                       System.out.print(<span class="hljs-string">&quot;x&quot;</span>);<span class="hljs-comment">//都为1，则为x（没有系数和次方）</span><br>                   &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (e[k]==( -<span class="hljs-number">1</span> ))&#123;<span class="hljs-comment">//若为-1，避免输出-1x，</span><br>                       System.out.print( <span class="hljs-string">&quot;-x&quot;</span>);<span class="hljs-comment">//-1输出-x</span><br>                   &#125; <span class="hljs-keyword">else</span> &#123;<span class="hljs-comment">//只有系数</span><br>                       System.out.print( e[k] + <span class="hljs-string">&quot;x&quot;</span>);<span class="hljs-comment">//例如 -2x，3x</span><br>                   &#125;<br>               &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (k==<span class="hljs-number">0</span>)&#123;<span class="hljs-comment">//根据题目，幂次为0，只用输出系数</span><br>                   System.out.print(e[k]);<span class="hljs-comment">//例如-20</span><br>               &#125; <span class="hljs-keyword">else</span> &#123;<span class="hljs-comment">//幂次不为0或1</span><br>                   <span class="hljs-keyword">if</span>(e[k]==<span class="hljs-number">1</span>) &#123;<span class="hljs-comment">//若系数为1</span><br>                       System.out.print(<span class="hljs-string">&quot;x&quot;</span>+k);<span class="hljs-comment">//不用输出系数，例如x³</span><br>                   &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ( e[k] == (-<span class="hljs-number">1</span>) )&#123;<span class="hljs-comment">//系数为-1</span><br>                           System.out.print(<span class="hljs-string">&quot;-x&quot;</span> + k);<span class="hljs-comment">//同理,例如-x²</span><br>                   &#125; <span class="hljs-keyword">else</span> &#123;<span class="hljs-comment">//都不是则正常输出</span><br>                       System.out.print(e[k] + <span class="hljs-string">&quot;x&quot;</span> + k);<span class="hljs-comment">//为正数，上面加过“+”，为负数则带入原数，例如3x²，-2x³</span><br>                   &#125;<br>               &#125;<br>               count = <span class="hljs-number">1</span>;<span class="hljs-comment">//赋值，代表后续的都不为第一位，要加“+”</span><br>           &#125;<br>       &#125;<br>       <span class="hljs-keyword">if</span> (count == <span class="hljs-number">0</span>) &#123;<span class="hljs-comment">//若值都为0</span><br>           System.out.println(<span class="hljs-string">&quot;0&quot;</span>);<span class="hljs-comment">//输出0</span><br>       &#125;`<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="取出前50个素数"><a href="#取出前50个素数" class="headerlink" title="取出前50个素数"></a>取出前50个素数</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] data = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">50</span>];<span class="hljs-comment">//定义一个50个数的数组</span><br>    data[<span class="hljs-number">0</span>] = <span class="hljs-number">2</span>;<span class="hljs-comment">//将第一个0位赋值2，第一个素数</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<span class="hljs-comment">//定义有1个素数</span><br>    out:<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">3</span>;x &lt; data.length;i++)&#123;<span class="hljs-comment">//从三开始无限加，条件是找到50个素数</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;a &lt; x; a++)&#123;<span class="hljs-comment">//当前数除已知的素数</span><br>                <span class="hljs-keyword">if</span> (i % data[a] ==<span class="hljs-number">0</span>)&#123;<span class="hljs-comment">//为0则重新下一轮</span><br>                <span class="hljs-keyword">continue</span> out;<br>                &#125;<br>            &#125;<br>            data[x++]=i;<span class="hljs-comment">//将得出的素数赋值给数组，这里i++代表先赋值在将</span><br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k:data) &#123;<span class="hljs-comment">//遍历数组取出素数</span><br>            System.out.print(k+<span class="hljs-string">&quot; &quot;</span>);<br>        &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-Java包"><a href="#7-Java包" class="headerlink" title="7 Java包"></a><font color='blue'>7 Java包</font></h2><ul>
+<li><h4 id="随机数-Random"><a href="#随机数-Random" class="headerlink" title="随机数 Random"></a>随机数 Random</h4></li>
+</ul>
+<p><img src="https://kong-1252345869.cos.ap-nanjing.myqcloud.com/typora/image-20220624221952121.png" srcset="/img/loading.gif" lazyload alt="image-20220624221952121"></p>
+<h2 id="8-数组"><a href="#8-数组" class="headerlink" title="8 数组"></a><font color='blue'>8 数组</font></h2><ul>
+<li><h5 id="定义数组"><a href="#定义数组" class="headerlink" title="定义数组"></a>定义数组</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//int[] i = new int[] &#123;1,2,3,4&#125;;</span><br><span class="hljs-type">int</span>[] i = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>&#125;;<span class="hljs-comment">//简化</span><br>String[] a = &#123;<span class="hljs-string">&quot;一&quot;</span>,<span class="hljs-string">&quot;二&quot;</span>,<span class="hljs-string">&quot;三&quot;</span>&#125;;<br><span class="hljs-type">int</span>[][] i = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span> [<span class="hljs-number">2</span>][<span class="hljs-number">3</span>]<span class="hljs-comment">//定义一个两行三列的数组</span><br>System.out.println(i[<span class="hljs-number">0</span>]);<span class="hljs-comment">//输出i数组第一个数据，数组数据从0开始</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<h5 id="length-数组长度"><a href="#length-数组长度" class="headerlink" title="length(数组长度)"></a>length(数组长度)</h5></blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] i = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;;<br>System.out.println(i.length);<span class="hljs-comment">//输出数组i的长度</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<h5 id="数组动态初始化"><a href="#数组动态初始化" class="headerlink" title="数组动态初始化"></a>数组动态初始化</h5></blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> [] i = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">5</span>];<span class="hljs-comment">//先定义一个数组，默认数组数据为0</span><br>i[<span class="hljs-number">0</span>] = <span class="hljs-number">10</span>;<span class="hljs-comment">//再对数组进行赋值</span><br><span class="hljs-comment">//String默认值为null，double默认0.0</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<h5 id="数组遍历"><a href="#数组遍历" class="headerlink" title="数组遍历"></a>数组遍历</h5></blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] a = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;;<span class="hljs-comment">//定义数组</span><br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;i &lt; a.length;i++ )&#123;<span class="hljs-comment">//循环次数从0开始，到数组最大长度结束</span><br>    System.out.println(a[i]);<span class="hljs-comment">//输出当前值</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="注意事项-2"><a href="#注意事项-2" class="headerlink" title="注意事项"></a><font color='cornflowerblue'>注意事项</font></h3><ul>
+<li><h5 id="什么类型的数组只能存放什么类型的数据"><a href="#什么类型的数组只能存放什么类型的数据" class="headerlink" title="什么类型的数组只能存放什么类型的数据"></a>什么<font color='red'>类型</font>的数组只能存放什么类型的数据</h5></li>
+<li><h5 id="数组一旦被定义出来之后，类型和长度就固定了"><a href="#数组一旦被定义出来之后，类型和长度就固定了" class="headerlink" title="数组一旦被定义出来之后，类型和长度就固定了"></a>数组一旦被定义出来之后，<font color='red'>类型和长度</font>就固定了</h5></li>
+</ul>
+<h2 id="9-面向对象"><a href="#9-面向对象" class="headerlink" title="9 面向对象"></a><font color='blue'>9 面向对象</font></h2><h3 id="9-1-新建类"><a href="#9-1-新建类" class="headerlink" title="9.1 新建类"></a><font color='green'>9.1 新建类</font></h3><img src="https://kong-1252345869.cos.ap-nanjing.myqcloud.com/typora/image-20220624222517528.png" srcset="/img/loading.gif" lazyload alt="image-20220624222517528" style="zoom:80%;" />
+
+<h3 id="9-2-构造器"><a href="#9-2-构造器" class="headerlink" title="9.2 构造器"></a><font color='green'>9.2 构造器</font></h3><img src="https://kong-1252345869.cos.ap-nanjing.myqcloud.com/typora/image-20220624222626819.png" srcset="/img/loading.gif" lazyload alt="image-20220624222626819" style="zoom: 67%;" />
+
+<img src="https://kong-1252345869.cos.ap-nanjing.myqcloud.com/typora/image-20220624222812216.png" srcset="/img/loading.gif" lazyload alt="image-20220624222812216" style="zoom:60%;" />
+
+<h3 id="9-3-this"><a href="#9-3-this" class="headerlink" title="9.3 this"></a><font color='green'>9.3 this</font></h3><h5 id="this代表当前对象"><a href="#this代表当前对象" class="headerlink" title="this代表当前对象"></a><font color='red'>this代表当前对象</font></h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">demo3</span> &#123;<br>    String age;<br>    <span class="hljs-type">int</span> command;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">demo3</span><span class="hljs-params">(String age, <span class="hljs-type">int</span> command)</span>&#123;<br>        <span class="hljs-built_in">this</span>.age = age;<span class="hljs-comment">//从参数构造器的形参取到的值赋值给对象要加this,不能写age = age,这样都默认为构造器的形参</span><br>        <span class="hljs-built_in">this</span>.command = command;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="9-4-javaBean"><a href="#9-4-javaBean" class="headerlink" title="9.4 javaBean"></a><font color='green'>9.4 javaBean</font></h3><img src="https://kong-1252345869.cos.ap-nanjing.myqcloud.com/typora/image-20220624222936291.png" srcset="/img/loading.gif" lazyload alt="image-20220624222936291" style="zoom: 50%;" />
+
+<h3 id="9-5-案例"><a href="#9-5-案例" class="headerlink" title="9.5 案例"></a><font color='green'>9.5 案例</font></h3><h4 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a><font color='cornflowerblue'>购物车</font></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    Goods[] shopCar = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Goods</span>[<span class="hljs-number">100</span>];<span class="hljs-comment">//[null]//int[] a = new int[100]//创建数组不参与循环</span><br>    out:<br>    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>        System.out.println(<span class="hljs-string">&quot;请您选择如下命令操作:&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;添加商品到购物车:add&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;查询商品购物车展示:query&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;修改商品数量:update&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;结算商品的金额:pay&quot;</span>);<br>        <span class="hljs-type">Scanner</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>        System.out.println(<span class="hljs-string">&quot;请您输入命令: &quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">command</span> <span class="hljs-operator">=</span> in.next();<br>        <span class="hljs-keyword">switch</span> (command) &#123;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;add&quot;</span>:<span class="hljs-comment">//添加商品到购物车</span><br>                addGoods(shopCar, in);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;query&quot;</span>:<span class="hljs-comment">//查询商品在购物车展示</span><br>                queryGoods(shopCar);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;update&quot;</span>:<span class="hljs-comment">//修改商品在购物车数量</span><br>                updateGoods(shopCar, in);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;pay&quot;</span>:<span class="hljs-comment">//结算金额</span><br>                payGoods(shopCar);<br>                <span class="hljs-keyword">break</span> out;<br>            <span class="hljs-keyword">default</span>:<br>                System.out.println(<span class="hljs-string">&quot;输入错误&quot;</span>);<br>                <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br><br>&#125;<br><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">payGoods</span><span class="hljs-params">(Goods[] shopCar)</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-type">double</span> <span class="hljs-variable">pay</span> <span class="hljs-operator">=</span> <span class="hljs-number">0.0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; shopCar.length; i++) &#123;<br>        <span class="hljs-type">Goods</span> <span class="hljs-variable">g</span> <span class="hljs-operator">=</span> shopCar[i];<br>        <span class="hljs-keyword">if</span> (g != <span class="hljs-literal">null</span>) &#123;<br>            pay += (g.price*g.buyNumber);<br>            a++;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(a ==<span class="hljs-number">0</span>)&#123;<br>        System.out.println(<span class="hljs-string">&quot;您未加购商品&quot;</span>);<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        queryGoods(shopCar);<br>        System.out.println(<span class="hljs-string">&quot;您一共需支付&quot;</span> + pay + <span class="hljs-string">&quot;元&quot;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateGoods</span><span class="hljs-params">(Goods[] shopCar, Scanner ii)</span> &#123;<span class="hljs-comment">//将下面方法调用,修改商品数量</span><br>    System.out.println(<span class="hljs-string">&quot;输入要修改的商品编号&quot;</span>);<br>    <span class="hljs-type">int</span> <span class="hljs-variable">bh</span> <span class="hljs-operator">=</span> ii.nextInt();<br>    <span class="hljs-type">Goods</span> <span class="hljs-variable">g</span> <span class="hljs-operator">=</span> getGoodsId(shopCar, bh);<br>    <span class="hljs-keyword">if</span> (g != <span class="hljs-literal">null</span>) &#123;<br>        System.out.println(<span class="hljs-string">&quot;输入 &quot;</span>+g.name+<span class="hljs-string">&quot; 要购买的数量&quot;</span>);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">sl</span> <span class="hljs-operator">=</span> ii.nextInt();<br>        g.buyNumber = sl;<br>        System.out.println(<span class="hljs-string">&quot;修改完成&quot;</span>);<br>        queryGoods(shopCar);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;输入错误&quot;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Goods <span class="hljs-title function_">getGoodsId</span><span class="hljs-params">(Goods[] shopCar, <span class="hljs-type">int</span> id)</span> &#123;<span class="hljs-comment">//寻找是否有此id商品,找到返回商品数据,没找到返回为空,封装方法</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; shopCar.length; i++) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">Goods</span> <span class="hljs-variable">g</span> <span class="hljs-operator">=</span> shopCar[i];<br>        <span class="hljs-keyword">if</span> (g != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">if</span> (g.id == id) &#123;<br>                <span class="hljs-keyword">return</span> g;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>&#125;<br><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">queryGoods</span><span class="hljs-params">(Goods[] shopCar)</span> &#123;<span class="hljs-comment">//商品展示</span><br>    System.out.println(<span class="hljs-string">&quot;===========查询购物车信息==========&quot;</span>);<br>    System.out.println(<span class="hljs-string">&quot;编号\t\t名称\t\t\t价格\t\t\t购买数量&quot;</span>);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; shopCar.length; i++) &#123;<br>        <span class="hljs-type">Goods</span> <span class="hljs-variable">g</span> <span class="hljs-operator">=</span> shopCar[i];<span class="hljs-comment">//int g = a[i] 吧goods想象成int</span><br>        <span class="hljs-keyword">if</span> (g != <span class="hljs-literal">null</span>) &#123;<br>            System.out.println(g.id + <span class="hljs-string">&quot;\t\t&quot;</span> + g.name + <span class="hljs-string">&quot;\t\t\t&quot;</span> + g.price + <span class="hljs-string">&quot;\t\t\t&quot;</span> + g.buyNumber);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<span class="hljs-comment">//为空遍历结束</span><br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addGoods</span><span class="hljs-params">(Goods[] shopCar, Scanner ii)</span> &#123;<span class="hljs-comment">//商品录入</span><br>    <span class="hljs-comment">//录入要购买商品的信息</span><br>    System.out.println(<span class="hljs-string">&quot;请输入购买商品的编号(不重复)&quot;</span>);<br>    <span class="hljs-type">int</span> <span class="hljs-variable">id</span> <span class="hljs-operator">=</span> ii.nextInt();<br>    System.out.println(<span class="hljs-string">&quot;请输入购买商品的名称&quot;</span>);<br>    <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> ii.next();<br>    System.out.println(<span class="hljs-string">&quot;请输入购买商品的数量&quot;</span>);<br>    <span class="hljs-type">int</span> <span class="hljs-variable">buyNumber</span> <span class="hljs-operator">=</span> ii.nextInt();<br>    System.out.println(<span class="hljs-string">&quot;请输入购买商品的价格&quot;</span>);<br>    <span class="hljs-type">double</span> <span class="hljs-variable">price</span> <span class="hljs-operator">=</span> ii.nextDouble();<br>    <span class="hljs-comment">//把购买商品的信息封装成一个对象</span><br>    <span class="hljs-type">Goods</span> <span class="hljs-variable">g</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Goods</span>();<br>    g.id = id;<br>    g.name = name;<br>    g.buyNumber = buyNumber;<br>    g.price = price;<br>    <span class="hljs-comment">//商品对象添加到购物车数组</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; shopCar.length; i++) &#123;<br>        <span class="hljs-keyword">if</span> (shopCar[i] == <span class="hljs-literal">null</span>) &#123;<span class="hljs-comment">//确定没有数据</span><br>            shopCar[i] = g;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>    System.out.println(<span class="hljs-string">&quot;商品 &quot;</span> + name + <span class="hljs-string">&quot; 添加完成&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Goods</span> &#123;<br>    <span class="hljs-type">int</span> id;<span class="hljs-comment">//商品编号</span><br>    String name;<span class="hljs-comment">//商品名称</span><br>    <span class="hljs-type">double</span> price;<span class="hljs-comment">//价格</span><br>    <span class="hljs-type">int</span> buyNumber;<span class="hljs-comment">//数量</span><br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="10-string"><a href="#10-string" class="headerlink" title="10 string"></a><font color='blue'>10 string</font></h2><ul>
+<li>java.lang.String类代表字符串，String类定义的变量可以用于指向字符串对象，然后操作该字符串。</li>
+<li>Java程序中的所有字符串文字（例如“abc”）都为此类的对象。</li>
+<li>String其实常被称为不可变字符串类型，它的对象在创建后不能被更改。<ul>
+<li>每次更改都是指向了新的对象</li>
+</ul>
+</li>
+</ul>
+<h3 id="10-1-常用api"><a href="#10-1-常用api" class="headerlink" title="10.1 常用api"></a><font color='green'>10.1 常用api</font></h3><ul>
+<li><h5 id="equals-字符串比较"><a href="#equals-字符串比较" class="headerlink" title="equals(字符串比较)"></a>equals(字符串比较)</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;123&quot;</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&quot;123&quot;</span>);<br>System.out.println(a.equals(b));<span class="hljs-comment">//输出true</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="equalsIgnoreCase-忽略大小写比较字符串"><a href="#equalsIgnoreCase-忽略大小写比较字符串" class="headerlink" title="equalsIgnoreCase(忽略大小写比较字符串)"></a>equalsIgnoreCase(忽略大小写比较字符串)</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;a123&quot;</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&quot;A123&quot;</span>);<br>System.out.println(a.equalsIgnoreCase(b));<span class="hljs-comment">//输出true</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="length-获取字符串长度"><a href="#length-获取字符串长度" class="headerlink" title="length(获取字符串长度)"></a>length(获取字符串长度)</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">z</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;12345&quot;</span>;<br>System.out.pprintln(z.length);<span class="hljs-comment">//输出5</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="charAT-获取索引位置处的字符"><a href="#charAT-获取索引位置处的字符" class="headerlink" title="charAT(获取索引位置处的字符)"></a>charAT(获取索引位置处的字符)</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">z</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;22345&quot;</span>;<br>System.out.pprintln(z.charAT(<span class="hljs-number">0</span>));<span class="hljs-comment">//第一个字符,输出2</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="遍历字符串"><a href="#遍历字符串" class="headerlink" title="遍历字符串"></a><font color='red'>遍历字符串</font></h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;123456&quot;</span>;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; a.length; i++)&#123;<br>    <span class="hljs-type">char</span> <span class="hljs-variable">ah</span> <span class="hljs-operator">=</span> a.charAT(i);<br>    System.out.println(ah);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="toCharArray-把字符串转成字符数组"><a href="#toCharArray-把字符串转成字符数组" class="headerlink" title="toCharArray(把字符串转成字符数组)"></a>toCharArray(把字符串转成字符数组)</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;123&quot;</span>;<br><span class="hljs-type">char</span>[] b = a.toCharArray();<span class="hljs-comment">//b = &#123;1,2,3&#125;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="substring-截取字符串内容"><a href="#substring-截取字符串内容" class="headerlink" title="substring(截取字符串内容)"></a>substring(截取字符串内容)</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;12345&quot;</span>;<br>System.out.println(a.substring(<span class="hljs-number">2</span>,<span class="hljs-number">4</span>));<span class="hljs-comment">//输出34(左边包含,右边不包含)</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="replace-替换字符串"><a href="#replace-替换字符串" class="headerlink" title="replace(替换字符串)"></a>replace(替换字符串)</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;12345123&quot;</span>;<br>System.out.println(a.replace(<span class="hljs-string">&quot;123&quot;</span>,<span class="hljs-string">&quot;111&quot;</span>))<span class="hljs-comment">//将123替换成111,输出11145111//只输入一位默认取到末尾</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="contains-查询是否包含字符"><a href="#contains-查询是否包含字符" class="headerlink" title="contains(查询是否包含字符)"></a>contains(查询是否包含字符)</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;12345&quot;</span>;<br>System.out.println(a.contains(<span class="hljs-string">&quot;123&quot;</span>));<span class="hljs-comment">//包含123,返回true</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="startsWith-查询是否以输入字符开头"><a href="#startsWith-查询是否以输入字符开头" class="headerlink" title="startsWith(查询是否以输入字符开头)"></a>startsWith(查询是否以输入字符开头)</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;12345&quot;</span>;<br>System.out.println(a.startsWith(<span class="hljs-string">&quot;12&quot;</span>));<span class="hljs-comment">//是12开头,输出true</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="split-按照某个字符把字符串分割成字符串数组返回"><a href="#split-按照某个字符把字符串分割成字符串数组返回" class="headerlink" title="split(按照某个字符把字符串分割成字符串数组返回)"></a>split(按照某个字符把字符串分割成字符串数组返回)</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;a.31.313&quot;</span>;<br>String[] b = a.split(<span class="hljs-string">&quot;.&quot;</span>);<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; b.length; i++) &#123;<br>     System.out.println(b[i]);<span class="hljs-comment">//输出&#123;a,31,313&#125;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="11-ArrayList-集合"><a href="#11-ArrayList-集合" class="headerlink" title="11 ArrayList 集合"></a><font color='blue'>11 ArrayList 集合</font></h2><h3 id="11-1-集合的特点"><a href="#11-1-集合的特点" class="headerlink" title="11.1 集合的特点"></a><font color='green'>11.1 集合的特点</font></h3><ul>
+<li><h5 id="集合的大小不固定，启动后可以动态变化，类型也可以选择不固定"><a href="#集合的大小不固定，启动后可以动态变化，类型也可以选择不固定" class="headerlink" title="集合的大小不固定，启动后可以动态变化，类型也可以选择不固定."></a>集合的<font color='red'>大小不固定</font>，启动后可以动态变化，类型也可以选择不固定.</h5></li>
+<li><h5 id="集合非常适合做元素个数不确定，且要进行增删操作的业务场景"><a href="#集合非常适合做元素个数不确定，且要进行增删操作的业务场景" class="headerlink" title="集合非常适合做元素个数不确定，且要进行增删操作的业务场景."></a>集合非常适合做元素个数不确定，且要进行增删操作的业务场景.</h5></li>
+<li><h5 id="集合的提供了许多丰富、好用的功能，而数组的功能很单一"><a href="#集合的提供了许多丰富、好用的功能，而数组的功能很单一" class="headerlink" title="集合的提供了许多丰富、好用的功能，而数组的功能很单一."></a>集合的提供了许多丰富、好用的功能，而数组的功能很单一.</h5></li>
+<li><h5 id="ArrayList是集合的一种-支持索引"><a href="#ArrayList是集合的一种-支持索引" class="headerlink" title="ArrayList是集合的一种,支持索引."></a>ArrayList是集合的一种,支持索引.</h5></li>
+</ul>
+<h3 id="11-2-ArrayList的使用"><a href="#11-2-ArrayList的使用" class="headerlink" title="11.2 ArrayList的使用"></a><font color='green'>11.2 ArrayList的使用</font></h3><h5 id="示例-集合中只能储存引用类型-不支持基本数据类型"><a href="#示例-集合中只能储存引用类型-不支持基本数据类型" class="headerlink" title="示例    (集合中只能储存引用类型,不支持基本数据类型)"></a><font color='red'>示例    (集合中只能储存引用类型,不支持基本数据类型)</font></h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">ArrayList</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>();<span class="hljs-comment">//新建集合对象</span><br>a.add(<span class="hljs-string">&quot;元素1&quot;</span>);<span class="hljs-comment">//向集合添加元素</span><br>a.add(<span class="hljs-number">12</span>);<span class="hljs-comment">//可以使任意类型</span><br>a.add(<span class="hljs-number">1.2</span>);<br>a.add(<span class="hljs-string">&#x27;一&#x27;</span>);<br>System.out.println(a);<span class="hljs-comment">//可以直接输出,输出结果为[元素1, 12, 1.2, 一]</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="给指定索引添加元素"><a href="#给指定索引添加元素" class="headerlink" title="给指定索引添加元素"></a>给指定索引添加元素</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">示例;<br>a.add(<span class="hljs-number">2</span>, <span class="hljs-number">45</span>);<span class="hljs-comment">//给索引2添加元素,元素向后位移为[元素1, 45, 12, 1.2, 一]</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="固定集合元素类型"><a href="#固定集合元素类型" class="headerlink" title="固定集合元素类型"></a>固定集合元素类型</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">ArrayList&lt;String&gt; List = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;String&gt;()<span class="hljs-comment">//定义字符串类型集合</span><br>ArrayList&lt;Integer&gt;List = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Integer&gt;()<span class="hljs-comment">//定义整数类型集合,注意不是int</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="11-3-常用api"><a href="#11-3-常用api" class="headerlink" title="11.3 常用api"></a><font color='green'>11.3 常用api</font></h3><ul>
+<li><h5 id="get-获取某个索引位置处的元素值"><a href="#get-获取某个索引位置处的元素值" class="headerlink" title="get(获取某个索引位置处的元素值)"></a>get(获取某个索引位置处的元素值)</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">示例;<br>System.out.println(a.get(<span class="hljs-number">1</span>))<span class="hljs-comment">//获取索引1的元素值,输出12</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="size-获取元素的个数"><a href="#size-获取元素的个数" class="headerlink" title="size(获取元素的个数)"></a>size(获取元素的个数)</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">示例;<br>System.out.println(a.size());<span class="hljs-comment">//输出4,元素个数</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="遍历集合"><a href="#遍历集合" class="headerlink" title="遍历集合"></a><font color='red'>遍历集合</font></h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">示例;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; a.size(); i++) &#123;<br>    System.out.println(a.get(i));<span class="hljs-comment">//依次输出集合元素</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="remove-根据索引位置-删除元素值并返回被删除的元素值-x2F-x2F-遍历删除加i–或者倒叙"><a href="#remove-根据索引位置-删除元素值并返回被删除的元素值-x2F-x2F-遍历删除加i–或者倒叙" class="headerlink" title="remove(根据索引位置,删除元素值并返回被删除的元素值)&#x2F;&#x2F;遍历删除加i–或者倒叙"></a>remove(根据索引位置,<font color='red'>删除</font>元素值并<font color='red'>返回被删除的元素值</font>)&#x2F;&#x2F;<font color='red'>遍历删除加i–或者倒叙</font></h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">示例;<br>System.out.println(a.remove(<span class="hljs-number">1</span>));<span class="hljs-comment">//删除索引1的元素值并返回,输出&quot;12&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="remove重载-直接删除元素值-成功返回true-失败返回false"><a href="#remove重载-直接删除元素值-成功返回true-失败返回false" class="headerlink" title="remove重载(直接删除元素值,成功返回true,失败返回false)"></a>remove重载(直接删除元素值,成功返回true,失败返回false)</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">示例;<span class="hljs-comment">//删除整数类型  (a.remove((Integer)12))</span><br>System.out.println(a.remove(<span class="hljs-string">&quot;元素1&quot;</span>));<span class="hljs-comment">//删除集合中为元素1的元素值,返回true(有重复的只删除第一个)</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="set-修改索引位置的元素值-返回修改前的元素值"><a href="#set-修改索引位置的元素值-返回修改前的元素值" class="headerlink" title="set(修改索引位置的元素值,返回修改前的元素值)"></a>set(修改索引位置的元素值,返回<font color='red'>修改前</font>的元素值)</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">示例;<br>System.out.println(a.set(<span class="hljs-number">1</span>,<span class="hljs-string">&quot;123&quot;</span>));<span class="hljs-comment">//将索引1的元素值修改为123,返回&quot;元素1&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="11-4-案例"><a href="#11-4-案例" class="headerlink" title="11.4 案例"></a><font color='red'>11.4 案例</font></h3><ul>
+<li><h5 id="电影类型集合输出"><a href="#电影类型集合输出" class="headerlink" title="电影类型集合输出"></a>电影类型集合输出</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">demo</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        ArrayList&lt;Movie&gt; List = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<span class="hljs-comment">//新建Movie类型集合</span><br>        <span class="hljs-type">Movie</span> <span class="hljs-variable">m1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Movie</span>(<span class="hljs-string">&quot;长津湖&quot;</span>, <span class="hljs-number">9.7</span>, <span class="hljs-string">&quot;吴京&quot;</span>);<span class="hljs-comment">//新建Movie类型并赋值</span><br>        <span class="hljs-type">Movie</span> <span class="hljs-variable">m2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Movie</span>(<span class="hljs-string">&quot;我和我的父辈&quot;</span>, <span class="hljs-number">9.6</span>, <span class="hljs-string">&quot;吴京&quot;</span>);<br>        <span class="hljs-type">Movie</span> <span class="hljs-variable">m3</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Movie</span>(<span class="hljs-string">&quot;扑水少年&quot;</span>, <span class="hljs-number">9.5</span>, <span class="hljs-string">&quot;王川&quot;</span>);<br>        List.add(m1);<span class="hljs-comment">//将Movie类型元素值赋予集合</span><br>        List.add(m2);<br>        List.add(m3);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; List.size(); i++) &#123;<span class="hljs-comment">//遍历集合</span><br>            <span class="hljs-type">Movie</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> List.get(i);<span class="hljs-comment">//新建Movie类型变量来接元素值</span><br>            System.out.println(<span class="hljs-string">&quot;电影名称:&quot;</span> + s.getName() + <span class="hljs-string">&quot;评分:&quot;</span> + s.getScore() + <span class="hljs-string">&quot;主演:&quot;</span> + s.getActor());<span class="hljs-comment">//输出信息</span><br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">/*//建立电影信息类型对象</span><br><span class="hljs-comment">public class Movie &#123;</span><br><span class="hljs-comment">    private String name;</span><br><span class="hljs-comment">    private double score;</span><br><span class="hljs-comment">    private String actor;</span><br><span class="hljs-comment">    public Movie() &#123;</span><br><span class="hljs-comment">    &#125;</span><br><span class="hljs-comment">    public Movie(String name, double score, String actor) &#123;</span><br><span class="hljs-comment">        this.name = name;</span><br><span class="hljs-comment">        this.score = score;</span><br><span class="hljs-comment">        this.actor = actor;</span><br><span class="hljs-comment">    &#125;</span><br><span class="hljs-comment">    public String getName() &#123;return name;&#125;</span><br><span class="hljs-comment">    public void setName(String name) &#123;this.name = name;&#125;</span><br><span class="hljs-comment">    public double getScore() &#123;return score;&#125;</span><br><span class="hljs-comment">    public void setScore(double score) &#123;this.score = score;&#125;</span><br><span class="hljs-comment">    public String getActor() &#123;return actor;&#125;</span><br><span class="hljs-comment">    public void setActor(String actor) &#123;this.actor = actor;&#125;</span><br><span class="hljs-comment">&#125;</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="输入学生信息根据学号查找输出"><a href="#输入学生信息根据学号查找输出" class="headerlink" title="输入学生信息根据学号查找输出"></a>输入学生信息根据学号查找输出</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ArrayListTest</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">Scanner</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>        ArrayList&lt;Student&gt; studens = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>        studens.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;2018001&quot;</span>, <span class="hljs-string">&quot;小是的明&quot;</span>, <span class="hljs-number">22</span>, <span class="hljs-string">&quot;计算机一班&quot;</span>));<br>        studens.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;2018002&quot;</span>, <span class="hljs-string">&quot;小是多&quot;</span>, <span class="hljs-number">21</span>, <span class="hljs-string">&quot;护理一班&quot;</span>));<br>        studens.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;2018003&quot;</span>, <span class="hljs-string">&quot;大是明&quot;</span>, <span class="hljs-number">24</span>, <span class="hljs-string">&quot;电竞一班&quot;</span>));<br>        studens.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;2018004&quot;</span>, <span class="hljs-string">&quot;奥德明&quot;</span>, <span class="hljs-number">21</span>, <span class="hljs-string">&quot;计算机二班&quot;</span>));<br>        System.out.println(<span class="hljs-string">&quot;==学号====姓名===年龄====班级==&quot;</span>);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; studens.size(); i++) &#123;<span class="hljs-comment">//遍历集合输出信息</span><br>            <span class="hljs-type">Student</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> studens.get(i);<span class="hljs-comment">//新建学生信息类型变量来接集合元素</span><br>            System.out.println(k.getStudyNumber() + <span class="hljs-string">&quot;\t&quot;</span> + k.getName() + <span class="hljs-string">&quot;\t&quot;</span> + k.getAge() + <span class="hljs-string">&quot;\t&quot;</span> + k.getClassname());<span class="hljs-comment">//依次输出</span><br>        &#125;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)&#123;<span class="hljs-comment">//调用方法根据学号查询信息并输出</span><br>            System.out.println(<span class="hljs-string">&quot;请输入学号&quot;</span>);<br>            <span class="hljs-type">String</span> <span class="hljs-variable">studyNamber</span> <span class="hljs-operator">=</span> in.next();<span class="hljs-comment">//输入学号</span><br>            <span class="hljs-type">Student</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> getStudentById(studens,studyNamber);<span class="hljs-comment">//调用方法,放入集合和学号</span><br>            <span class="hljs-keyword">if</span> (b!=<span class="hljs-literal">null</span>)&#123;<span class="hljs-comment">//如果不为空,就是找到了</span><br>                System.out.println(b.getStudyNumber() + <span class="hljs-string">&quot;\t&quot;</span> + b.getName() + <span class="hljs-string">&quot;\t&quot;</span> + b.getAge() + <span class="hljs-string">&quot;\t&quot;</span> + b.getClassname());<br>            &#125;<span class="hljs-keyword">else</span>&#123;<span class="hljs-comment">//为空</span><br>                System.out.println(<span class="hljs-string">&quot;查无此人&quot;</span>);<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 根据学号查询学生对象返回</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> studens 存储全部学生对象的集合</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> StudentName 学号</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 学生对象 | null</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Student <span class="hljs-title function_">getStudentById</span><span class="hljs-params">(ArrayList&lt;Student&gt; studens,String StudentName)</span> &#123;<span class="hljs-comment">//定义方法</span><br>    <span class="hljs-comment">//遍历学生对象集合</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; studens.size(); i++) &#123;<span class="hljs-comment">//遍历集合</span><br>            <span class="hljs-type">Student</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> studens.get(i);<br>            <span class="hljs-keyword">if</span> (a.getStudyNumber().equals(StudentName))&#123;<span class="hljs-comment">//比对学号</span><br>                <span class="hljs-keyword">return</span> a;<span class="hljs-comment">//查找到输出</span><br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<span class="hljs-comment">//为空</span><br>    &#125;<br>&#125;<br><span class="hljs-comment">/*建立学生信息类型对象</span><br><span class="hljs-comment">public class Student &#123;</span><br><span class="hljs-comment">    private String studyNumber;</span><br><span class="hljs-comment">    private String name;</span><br><span class="hljs-comment">    private int age;</span><br><span class="hljs-comment">    private String classname;</span><br><span class="hljs-comment">    public Student() &#123;</span><br><span class="hljs-comment">    &#125;</span><br><span class="hljs-comment">    public Student(String studyNumber, String name, int age, String classname) &#123;</span><br><span class="hljs-comment">        this.studyNumber = studyNumber;</span><br><span class="hljs-comment">        this.name = name;</span><br><span class="hljs-comment">        this.age = age;</span><br><span class="hljs-comment">        this.classname = classname;</span><br><span class="hljs-comment">    &#125;</span><br><span class="hljs-comment">    public String getStudyNumber() &#123;return studyNumber;&#125;</span><br><span class="hljs-comment">    public void setStudyNumber(String studyNumber) &#123;this.studyNumber = studyNumber;&#125;</span><br><span class="hljs-comment">    public String getName() &#123;return name;&#125;</span><br><span class="hljs-comment">    public void setName(String name) &#123;this.name = name;&#125;</span><br><span class="hljs-comment">    public int getAge() &#123;return age;&#125;</span><br><span class="hljs-comment">    public void setAge(int age) &#123;this.age = age;&#125;</span><br><span class="hljs-comment">    public String getClassname() &#123;return classname;&#125;</span><br><span class="hljs-comment">    public void setClassname(String classname) &#123;this.classname = classname;&#125;</span><br><span class="hljs-comment">&#125;</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Java/">#Java</a>
+      
+        <a href="/tags/%E4%BB%A3%E7%A0%81/">#代码</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Java笔记_基础</div>
+      <div>http://2323623353.github.io/2022/07/04/Java笔记_基础/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Kong</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月4日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/04/Java%E7%AC%94%E8%AE%B0_%E8%BF%9B%E9%98%B6/" title="Java笔记_进阶">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Java笔记_进阶</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/28/%E9%98%BF%E9%87%8C%E7%89%A9%E8%81%94%E7%BD%91%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BD%AC/" title="阿里物联网数据流转至RDS&amp;mySQL">
+                        <span class="hidden-mobile">阿里物联网数据流转至RDS&amp;mySQL</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <div>Kong的博客_</div> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/runtime.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/DynamicLine.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/love.min.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
